@@ -17,46 +17,41 @@ Disassembly of section .text:
 00000020 <led_blink>:
   20:	e92d4800 	push	{fp, lr}
   24:	e28db004 	add	fp, sp, #4
-  28:	e24dd008 	sub	sp, sp, #8
-  2c:	e59f3038 	ldr	r3, [pc, #56]	; 6c <led_blink+0x4c>
-  30:	e50b300c 	str	r3, [fp, #-12]
-  34:	e51b300c 	ldr	r3, [fp, #-12]
-  38:	e59f2030 	ldr	r2, [pc, #48]	; 70 <led_blink+0x50>
+  28:	e59f3028 	ldr	r3, [pc, #40]	; 58 <led_blink+0x38>
+  2c:	e59f2028 	ldr	r2, [pc, #40]	; 5c <led_blink+0x3c>
+  30:	e5832000 	str	r2, [r3]
+  34:	e59f3024 	ldr	r3, [pc, #36]	; 60 <led_blink+0x40>
+  38:	e3a02000 	mov	r2, #0
   3c:	e5832000 	str	r2, [r3]
-  40:	e59f302c 	ldr	r3, [pc, #44]	; 74 <led_blink+0x54>
-  44:	e50b3008 	str	r3, [fp, #-8]
-  48:	e51b3008 	ldr	r3, [fp, #-8]
-  4c:	e3a02000 	mov	r2, #0
-  50:	e5832000 	str	r2, [r3]
-  54:	eb000007 	bl	78 <delay>
-  58:	e51b3008 	ldr	r3, [fp, #-8]
-  5c:	e3a0200f 	mov	r2, #15
-  60:	e5832000 	str	r2, [r3]
-  64:	eb000003 	bl	78 <delay>
-  68:	eafffff6 	b	48 <led_blink+0x28>
-  6c:	e0200280 	eor	r0, r0, r0, lsl #5
-  70:	00001111 	andeq	r1, r0, r1, lsl r1
-  74:	e0200284 	eor	r0, r0, r4, lsl #5
+  40:	eb000007 	bl	64 <delay>
+  44:	e59f3014 	ldr	r3, [pc, #20]	; 60 <led_blink+0x40>
+  48:	e3a0200f 	mov	r2, #15
+  4c:	e5832000 	str	r2, [r3]
+  50:	eb000003 	bl	64 <delay>
+  54:	eafffff6 	b	34 <led_blink+0x14>
+  58:	e0200280 	eor	r0, r0, r0, lsl #5
+  5c:	00001111 	andeq	r1, r0, r1, lsl r1
+  60:	e0200284 	eor	r0, r0, r4, lsl #5
 
-00000078 <delay>:
-  78:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
-  7c:	e28db000 	add	fp, sp, #0
-  80:	e24dd00c 	sub	sp, sp, #12
-  84:	e59f3030 	ldr	r3, [pc, #48]	; bc <delay+0x44>
-  88:	e50b3008 	str	r3, [fp, #-8]
-  8c:	e51b3008 	ldr	r3, [fp, #-8]
-  90:	e3530000 	cmp	r3, #0
-  94:	03a02000 	moveq	r2, #0
-  98:	13a02001 	movne	r2, #1
-  9c:	e20220ff 	and	r2, r2, #255	; 0xff
-  a0:	e2433001 	sub	r3, r3, #1
-  a4:	e50b3008 	str	r3, [fp, #-8]
-  a8:	e3520000 	cmp	r2, #0
-  ac:	1afffff6 	bne	8c <delay+0x14>
-  b0:	e28bd000 	add	sp, fp, #0
-  b4:	e8bd0800 	pop	{fp}
-  b8:	e12fff1e 	bx	lr
-  bc:	000dbba0 	andeq	fp, sp, r0, lsr #23
+00000064 <delay>:
+  64:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+  68:	e28db000 	add	fp, sp, #0
+  6c:	e24dd00c 	sub	sp, sp, #12
+  70:	e59f3030 	ldr	r3, [pc, #48]	; a8 <delay+0x44>
+  74:	e50b3008 	str	r3, [fp, #-8]
+  78:	e51b3008 	ldr	r3, [fp, #-8]
+  7c:	e3530000 	cmp	r3, #0
+  80:	03a02000 	moveq	r2, #0
+  84:	13a02001 	movne	r2, #1
+  88:	e20220ff 	and	r2, r2, #255	; 0xff
+  8c:	e2433001 	sub	r3, r3, #1
+  90:	e50b3008 	str	r3, [fp, #-8]
+  94:	e3520000 	cmp	r2, #0
+  98:	1afffff6 	bne	78 <delay+0x14>
+  9c:	e28bd000 	add	sp, fp, #0
+  a0:	e8bd0800 	pop	{fp}
+  a4:	e12fff1e 	bx	lr
+  a8:	000dbba0 	andeq	fp, sp, r0, lsr #23
 
 Disassembly of section .ARM.attributes:
 

@@ -4,21 +4,24 @@
 #define GPJ2CON 	0XE0200280
 #define GPJ2DAT 	0XE0200284
 
+#define rGPJ2CON *((volatile unsigned int *)GPJ2CON)
+#define rGPJ2DAT *((volatile unsigned int *)GPJ2DAT)
+
 void delay(void);
 
 void led_blink(void)
 {
 	//led的初始化，也就是把GPJ0CON中的相关位设置为输出
-	 unsigned int *p = (unsigned int *)GPJ2CON;
-	 *p = 0x00001111;
-	 unsigned int *p1 = (unsigned int *)GPJ2DAT;
-	 
+	 //volatile unsigned int *p = (unsigned int *)GPJ2CON;
+	 //*p = 0x00001111;
+	 //volatile 	unsigned int *p1 = (unsigned int *)GPJ2DAT;
+	 rGPJ2CON = 0x00001111;
 	 
 	while(1)
 	{
-		*p1 = ((0 << 3) & (0 << 2) & (0 << 1) & (0 << 0));
+		rGPJ2DAT = ((0 << 3) & (0 << 2) & (0 << 1) & (0 << 0));
 		delay();
-		*p1 = ((1 << 3) | (1 << 2) | (1 << 1) | (1 << 0));
+		rGPJ2DAT = ((1 << 3) | (1 << 2) | (1 << 1) | (1 << 0));
 		delay();
 	}
 	
